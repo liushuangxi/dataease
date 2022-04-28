@@ -58,6 +58,8 @@ public class ExcelXlsxReader extends DefaultHandler {
      */
     private int totalRows=0;
 
+    private static final int maxRows = 100000;
+
     /**
      * 一行内cell集合
      */
@@ -181,7 +183,7 @@ public class ExcelXlsxReader extends DefaultHandler {
      */
     @Override
     public void startElement(String uri, String localName, String name, Attributes attributes) throws SAXException {
-        if(curRow>101){
+        if(curRow > maxRows){
             return;
         }
 
@@ -219,7 +221,7 @@ public class ExcelXlsxReader extends DefaultHandler {
      */
     @Override
     public void characters(char[] ch, int start, int length) throws SAXException {
-        if(curRow>101){
+        if(curRow > maxRows){
             return;
         }
         lastIndex += new String(ch, start, length);
@@ -235,7 +237,7 @@ public class ExcelXlsxReader extends DefaultHandler {
      */
     @Override
     public void endElement(String uri, String localName, String name) throws SAXException {
-        if(curRow>101){
+        if(curRow > maxRows){
             return;
         }
         //t元素也包含字符串
