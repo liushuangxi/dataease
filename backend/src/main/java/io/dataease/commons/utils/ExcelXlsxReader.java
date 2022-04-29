@@ -58,7 +58,7 @@ public class ExcelXlsxReader extends DefaultHandler {
      */
     private int totalRows=0;
 
-    private static final int maxRows = 100000;
+    private static final int maxRows = Integer.MAX_VALUE;
 
     /**
      * 一行内cell集合
